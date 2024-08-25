@@ -43,30 +43,6 @@ const NOTIFICATIONS = [
     createdAt: sub(new Date(), { hours: 3, minutes: 30 }),
     isUnRead: true,
   },
-  {
-    id: faker.string.uuid(),
-    title: 'You have new message',
-    description: 'Transaction Complete: Your recent payment of $50...',
-    avatar: '/assets/avatar/user.png',
-    createdAt: sub(new Date(), { days: 1, hours: 3, minutes: 30 }),
-    isUnRead: false,
-  },
-  {
-    id: faker.string.uuid(),
-    title: 'You have new mail',
-    description: 'Transaction Complete: Your recent payment of $50...',
-    avatar: '/assets/avatar/user.png',
-    createdAt: sub(new Date(), { days: 2, hours: 3, minutes: 30 }),
-    isUnRead: false,
-  },
-  {
-    id: faker.string.uuid(),
-    title: 'Delivery processing',
-    description: 'Transaction Complete: Your recent payment of $50...',
-    avatar: '/assets/avatar/user.png',
-    createdAt: sub(new Date(), { days: 3, hours: 3, minutes: 30 }),
-    isUnRead: false,
-  },
 ];
 
 export default function NotificationsPopover() {

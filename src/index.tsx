@@ -7,8 +7,6 @@ import { Provider } from '@/context';
 import ThemeProvider from '@/theme';
 import App from './app';
 
-import './index.scss';
-
 createRoot(document.getElementById("root") as HTMLElement).render(
 	<HelmetProvider>
 		<BrowserRouter>

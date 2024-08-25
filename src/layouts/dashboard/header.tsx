@@ -41,7 +41,11 @@ export default function Header({ onOpenNav }: { onOpenNav: () => void }) {
   );
 
   return (
-    <AppBar>
+    <AppBar position="static"
+    sx={{
+      maxWidth: '500px',
+      margin: '0 auto',  // Center the AppBar horizontally
+    }}>
       <Toolbar
         sx={{
           height: 80,

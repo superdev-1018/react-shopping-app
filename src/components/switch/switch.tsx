@@ -10,14 +10,14 @@ const SwitchButton = ({ activeTab, setActiveTab }: any) => {
         sx={{
           position: 'relative',
           transition: 'background-color 0.2s ease',
-          marginRight: '-40px', 
+          marginRight: '-15%', 
           zIndex: activeTab === 'orders' ? 1 : 0,
           backgroundColor: activeTab === 'orders' ? '#4CAF50' : '#ffffff', 
           color: activeTab === 'orders' ? 'white' : 'gray',
           borderRadius: '25px',
           border: 'none', 
-          maxWidth: '250px',
-          width: '195px', 
+          width: '60%',
+          maxWidth: '250px', 
           height: '50px',
           "&:hover": {
             backgroundColor: "#EDF7eD",
@@ -37,8 +37,8 @@ const SwitchButton = ({ activeTab, setActiveTab }: any) => {
           color: activeTab === 'analytics' ? 'white' : 'gray', 
           borderRadius: '25px', 
           border: 'none',
-          maxWidth: '250px',
-          width: '195px', 
+          width: '55%',
+          maxWidth: '250px',  
           height: '50px',
           "&:hover": {
             backgroundColor: "#EDF7ED",

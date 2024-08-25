@@ -15,7 +15,7 @@ import WestIcon from "@mui/icons-material/West";
 import TuneIcon from "@mui/icons-material/Tune";
 import CustomIcon from "@mui/icons-material/KeyboardArrowDown";
 import SwitchButton from "@/components/switch/switch";
-import BottomNav from "@/layouts/dashboard/buttom_nav";
+
 import { DashboardCard } from "@/components/card";
 import { Chart } from "@/components/charts";
 import { SearchInput } from "@/components/inputs";
@@ -25,8 +25,10 @@ import { OrderStatus } from "./component/status";
 import { UserCard } from "./component/userCard";
 import UserAvatar from "/assets/avatar/user.png";
 import Product from "/assets/products/product.png";
+import { useTheme } from "@mui/material/styles";
 
 export default function AppView() {
+  const theme = useTheme();
   const [selectedOption1, setSelectedOption1] = useState("10");
   const [selectedOption2, setSelectedOption2] = useState("10");
   const [activeTab, setActiveTab] = useState("orders");
@@ -94,8 +96,7 @@ export default function AppView() {
   ];
 
   return (
-    <Box>
-      <Container maxWidth="xl" sx={{ paddingBottom: "calc(80px + 1rem)" }}>
+      <Container maxWidth="xl" sx={{ paddingBottom:5, backgroundColor: "#f2f2f2"}}>
         <SwitchButton activeTab={activeTab} setActiveTab={setActiveTab} />
         {activeTab === "orders" ? (
           <Box>
@@ -178,8 +179,7 @@ export default function AppView() {
             </Stack>
           </Stack>
         )}
+        
       </Container>
-      <BottomNav />
-    </Box>
   );
 }

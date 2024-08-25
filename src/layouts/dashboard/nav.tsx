@@ -55,6 +55,7 @@ export default function Nav({ openNav, onCloseNav }: { openNav: boolean, onClose
           PaperProps={{
             sx: {
               width: NAV.WIDTH,
+              position: "relative",
             },
           }}
         >
