@@ -26,6 +26,7 @@ import { UserCard } from "./component/userCard";
 import UserAvatar from "/assets/avatar/user.png";
 import Product from "/assets/products/product.png";
 import { useTheme } from "@mui/material/styles";
+import BottomNav from "@/layouts/dashboard/buttom_nav";
 
 export default function AppView() {
   const theme = useTheme();
@@ -96,6 +97,7 @@ export default function AppView() {
   ];
 
   return (
+    <>
       <Container maxWidth="xl" sx={{ paddingBottom:5, backgroundColor: "#f2f2f2"}}>
         <SwitchButton activeTab={activeTab} setActiveTab={setActiveTab} />
         {activeTab === "orders" ? (
@@ -181,7 +183,7 @@ export default function AppView() {
             </Stack>
           </Stack>
         )}
-        
       </Container>
+    </>
   );
 }

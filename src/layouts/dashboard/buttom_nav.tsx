@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Tabs from "@mui/material/Tabs";
@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 });
 
 export default function BottomNav() {
+
   const theme = useTheme();
   const [value, setValue] = useState(0);
   const classes = useStyles();
@@ -27,15 +28,14 @@ export default function BottomNav() {
   const tabClass = { minWidth: 0, fontSize: '10px', padding: '6px 12px', aspectRatio: 1};
 
   return (
-    <>
     <Box
       sx={{
-        height: "15%",
+        height: "17%",
         maxWidth: "100%",
-        borderTopLeftRadius: 40,
-        borderTopRightRadius: 40,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
         position: "relative",
-        bottom: 0,
+        top: "-30px",
         boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)',
         backgroundColor: theme.palette.background.default,
       }}
@@ -140,6 +140,5 @@ export default function BottomNav() {
         <img src={NavContent} />
       </Box>
     </Box>
-  </>
   );
 }
