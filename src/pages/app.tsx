@@ -10,7 +10,7 @@ export default function AppPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard | Safeli Escrow </title>
+        <title> Dashboard | Shopping </title>
       </Helmet>
       <AppView />
     </>

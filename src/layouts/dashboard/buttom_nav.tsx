@@ -23,9 +23,11 @@ export default function BottomNav() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  const tabClass = { minWidth: 0, fontSize: '10px', padding: '6px 12px' };
-  
+
+  const tabClass = { minWidth: 0, fontSize: '10px', padding: '6px 12px', aspectRatio: 1};
+
   return (
+    <>
     <Box
       sx={{
         height: "15%",
@@ -35,7 +37,7 @@ export default function BottomNav() {
         position: "relative",
         bottom: 0,
         boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)',
-        backgroundColor: theme.palette.background.default
+        backgroundColor: theme.palette.background.default,
       }}
     >
       <Stack
@@ -51,6 +53,7 @@ export default function BottomNav() {
           borderTopRightRadius: 44,
           backgroundColor: theme.palette.background.paper,
           boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.9)',
+          overflow: "hidden"
         }}
       >
         <Tabs
@@ -59,12 +62,70 @@ export default function BottomNav() {
           variant="fullWidth"
           aria-label="full width tabs"
           sx={{ minHeight: 48 }}
+          TabIndicatorProps={{
+            sx: {
+              bottom: '-5px', 
+              height: '5px',
+              backgroundColor: '#4CAF50', 
+              borderRadius: '3px', 
+            },
+          }}
         >
-          <Tab icon={<GridViewIcon />} label="Dashboard" sx={tabClass} />
-          <Tab icon={<ProductionQuantityLimitsIcon />} label="Products" sx={tabClass} />
-          <Tab icon={<ReceiptLongIcon />} label="Orders" sx={tabClass} />
-          <Tab icon={<TrackChangesIcon />} label="Marketing" sx={tabClass} />
-          <Tab icon={<BusinessCenterIcon />} label="Business" sx={tabClass} />
+          <Tab 
+            icon={<GridViewIcon />} 
+            label="Dashboard" 
+            sx={{
+              ...tabClass,
+              backgroundColor: value === 0 ? '#4CAF50' : 'transparent',
+              '&.Mui-selected': {
+                color: 'white',
+              },
+            }} 
+          />
+          <Tab 
+            icon={<ProductionQuantityLimitsIcon />} 
+            label="Products" 
+            sx={{
+              ...tabClass,
+              backgroundColor: value === 1 ? '#4CAF50' : 'transparent',
+              '&.Mui-selected': {
+                color: 'white',
+              },
+            }} 
+          />
+          <Tab 
+            icon={<ReceiptLongIcon />} 
+            label="Orders" 
+            sx={{
+              ...tabClass,
+              backgroundColor: value === 2 ? '#4CAF50' : 'transparent',
+              '&.Mui-selected': {
+                color: 'white',
+              },
+            }} 
+          />
+          <Tab 
+            icon={<TrackChangesIcon />} 
+            label="Marketing" 
+            sx={{
+              ...tabClass,
+              backgroundColor: value === 3 ? '#4CAF50' : 'transparent',
+              '&.Mui-selected': {
+                color: 'white',
+              },
+            }} 
+          />
+          <Tab 
+            icon={<BusinessCenterIcon />} 
+            label="Business" 
+            sx={{
+              ...tabClass,
+              backgroundColor: value === 4 ? '#4CAF50' : 'transparent',
+              '&.Mui-selected': {
+                color: 'white',
+              },
+            }} 
+          />
         </Tabs>
       </Stack>
 
@@ -79,5 +140,6 @@ export default function BottomNav() {
         <img src={NavContent} />
       </Box>
     </Box>
+  </>
   );
 }

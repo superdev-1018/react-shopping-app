@@ -7,7 +7,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 export const SearchInput= () => {
     return (
-      <FormControl sx={{ m: 0, paddingLeft: 1, paddingRight: 1}}>
+      <FormControl sx={{ m: 0, width: '100%'}}>
         <OutlinedInput
           startAdornment={
             <InputAdornment position="start">

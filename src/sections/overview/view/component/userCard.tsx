@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Typography,
   CardContent,
@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { TextButton } from "@/components/buttons";
 import { CustomIconButton } from "@/components/Iconbuttons";
-
+import { Link } from "react-router-dom";
 
 interface UserInfoProps {
   avatarSrc: string;
@@ -20,22 +20,21 @@ interface UserInfoProps {
   additionalInfo?: string;
 }
 
-
 interface SummarySectionProps {
   title: string;
   value: string | number;
 }
 
 interface UserCardProps {
-    userName: string,
-    userImg: string,
-    product: string,
-    productImg:string,
-    total: number,
-    payment: string,
-    date : string,
-    orderNo: number,
-    status: number
+  userName: string;
+  userImg: string;
+  product: string;
+  productImg: string;
+  total: number;
+  payment: string;
+  date: string;
+  orderNo: number;
+  status: number;
 }
 
 const sectionStyles = {
@@ -44,7 +43,12 @@ const sectionStyles = {
   marginTop: 1,
 };
 
-const UserInfo: React.FC<UserInfoProps> = ({ avatarSrc, label, name, additionalInfo }) => (
+const UserInfo: React.FC<UserInfoProps> = ({
+  avatarSrc,
+  label,
+  name,
+  additionalInfo,
+}) => (
   <Grid container spacing={1} sx={sectionStyles} alignItems="center">
     <Grid item xs={2}>
       <Avatar variant="rounded" src={avatarSrc} alt={label} />
@@ -61,40 +65,51 @@ const UserInfo: React.FC<UserInfoProps> = ({ avatarSrc, label, name, additionalI
   </Grid>
 );
 
-
 const SummarySection: React.FC<SummarySectionProps> = ({ title, value }) => (
   <Box>
     <Typography sx={{ color: "#969696" }}>{title}</Typography>
     <Typography variant="h5">
-        {
-            typeof(value) =="number"? "$"+ value : value
-        }
+      {typeof value == "number" ? "$" + value : value}
     </Typography>
   </Box>
 );
 
-export const UserCard = ({userName, userImg, product, productImg, total, payment, date, orderNo, status}: UserCardProps) => {
-    let textBtnColor = "#EDF7ED";
-    let textBtnFontColor = "#4CAF50";
-    let btnTitle = "Complete";
-    switch (status){
-        case 1:
-            textBtnColor = "#EDF7ED";
-            textBtnFontColor = "#4CAF50";
-            btnTitle = "Complete";
-            break;
-        case 2:
-            textBtnColor = "#FFF5E5";
-            textBtnFontColor = "#FF9800";
-            btnTitle = "Pending";
-            break;
-    }
+export const UserCard = ({
+  userName,
+  userImg,
+  product,
+  productImg,
+  total,
+  payment,
+  date,
+  orderNo,
+  status,
+}: UserCardProps) => {
+  let textBtnColor = "#EDF7ED";
+  let textBtnFontColor = "#4CAF50";
+  let btnTitle = "Complete";
+  switch (status) {
+    case 1:
+      textBtnColor = "#EDF7ED";
+      textBtnFontColor = "#4CAF50";
+      btnTitle = "Complete";
+      break;
+    case 2:
+      textBtnColor = "#FFF5E5";
+      textBtnFontColor = "#FF9800";
+      btnTitle = "Pending";
+      break;
+  }
   return (
     <Card sx={{ borderRadius: "5px" }}>
       <CardContent>
         <Grid container spacing={1} sx={sectionStyles}>
           <Grid item xs={6.5}>
-            <TextButton title={btnTitle} fontColor={textBtnFontColor} bgColor={textBtnColor} />
+            <TextButton
+              title={btnTitle}
+              fontColor={textBtnFontColor}
+              bgColor={textBtnColor}
+            />
           </Grid>
           <Grid item xs={5.5}>
             <Stack direction="row" spacing={1}>
@@ -104,19 +119,16 @@ export const UserCard = ({userName, userImg, product, productImg, total, payment
             </Stack>
           </Grid>
         </Grid>
-
-        <UserInfo
-          avatarSrc={userImg}
-          label="Customer"
-          name={userName}
-        />
-
-        <UserInfo
-          avatarSrc={productImg}
-          label="Product"
-          name={product}
-          additionalInfo="+3 Products"
-        />
+        <Link to="/order/detail" style={{ textDecoration: "none", color: "black"}}>
+        <UserInfo avatarSrc={userImg} label="Customer" name={userName} />
+        
+          <UserInfo
+            avatarSrc={productImg}
+            label="Product"
+            name={product}
+            additionalInfo="+3 Products"
+          />
+        
 
         <Stack
           divider={<Divider orientation="vertical" flexItem />}
@@ -139,6 +151,7 @@ export const UserCard = ({userName, userImg, product, productImg, total, payment
         >
           <SummarySection title="Order No" value={orderNo} />
         </Stack>
+        </Link>
       </CardContent>
     </Card>
   );

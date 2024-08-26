@@ -138,10 +138,12 @@ export default function AppView() {
           </Box>
         ) : (
           <Stack spacing={2} sx={{ paddingTop: 2 }}>
-            <SearchInput />          
+            <Box sx={{paddingRight:1, paddingLeft: 1}}>
+              <SearchInput />          
+            </Box>
             <Grid container spacing={1}>
               <Grid item xs={6.5}>
-                <ContainedButton />
+                <ContainedButton title={"Create Order"} icon="plus"/>
               </Grid>
               <Grid item xs={5.5}>
                 <Stack direction="row" spacing={1}>

@@ -8,11 +8,16 @@ interface TextBtnProps {
   title: string
 }
 
-export const ContainedButton = () => {
+interface ContainedButtonProps {
+  title: string,
+  icon: any,
+}
+
+export const ContainedButton = ({title,icon}: ContainedButtonProps) => {
   return (
     <Button
       variant="contained"
-      startIcon={<AddIcon />}
+      startIcon={icon=="plus" ? <AddIcon /> : null}
       fullWidth
       sx={{
         backgroundColor: "#4CAF50",
@@ -30,7 +35,7 @@ export const ContainedButton = () => {
         fontWeight: 100,
       }}
     >
-      Create Order
+      {title}
     </Button>
   );
 };
