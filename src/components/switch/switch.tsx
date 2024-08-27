@@ -18,7 +18,10 @@ const SwitchButton = ({ activeTab, setActiveTab }: any) => {
           border: 'none', 
           width: '60%',
           maxWidth: '250px', 
-          height: '50px',
+          height: {
+            xs: "40px",
+            sm: "46px",
+          },
           "&:hover": {
             backgroundColor: "#EDF7eD",
           },
@@ -39,7 +42,10 @@ const SwitchButton = ({ activeTab, setActiveTab }: any) => {
           border: 'none',
           width: '55%',
           maxWidth: '250px',  
-          height: '50px',
+          height: {
+            xs: "40px",
+            sm: "46px",
+          },
           "&:hover": {
             backgroundColor: "#EDF7ED",
           }, 

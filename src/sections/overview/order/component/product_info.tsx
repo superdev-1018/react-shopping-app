@@ -35,13 +35,13 @@ const commonStyles = {
     marginBottom: 4,
   },
 };
-
+const txtClass = {fontWeight: "bold", fontSize: {xs:"12px", sm:"16px"}};
 const CartButton = () => {
   const [count, setCount] = useState(1);
 
   const handleAdd = () => setCount((prevCount) => prevCount + 1);
   const handleRemove = () => setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
-
+  
   return (
     <Stack direction="row" sx={commonStyles.alignItemsCenter}>
       <Button
@@ -53,7 +53,7 @@ const CartButton = () => {
       >
         <AddIcon />
       </Button>
-      <Typography variant="h6" sx={{ ...commonStyles.buttonStyles, width: "30px"}}>
+      <Typography sx={{ ...commonStyles.buttonStyles, width: "30px", ...txtClass}}>
         {count}
       </Typography>
       <Button
@@ -78,26 +78,26 @@ export const ProductCard = ({ name, type, price, count, img }: ProductCardProps)
       <Grid item xs={10}>
         <Grid container sx={commonStyles.alignItemsCenter}>
           <Grid item xs={8}>
-            <Typography sx={{ color: "black" }} variant="h6">
+            <Typography sx={{ color: "black",...txtClass}}>
               {name}
             </Typography>
           </Grid>
           <Grid item xs={4}>
-            <Typography sx={{ color: "black", textAlign: "end", marginRight: 1 }} variant="h6">
+            <Typography sx={{ color: "black", textAlign: "end", marginRight: 1, ...txtClass}}>
               $ {price}
             </Typography>
           </Grid>
         </Grid>
         <Grid container sx={commonStyles.alignItemsCenter}>
           <Grid item xs={4}>
-            <Typography sx={{ color: "#969696" }} variant="h6">
+            <Typography sx={{ color: "#969696", ...txtClass}}>
               {type}
             </Typography>
           </Grid>
           <Grid item xs={8}>
             <Stack direction="row" justifyContent="flex-end">
               <CartButton />
-              <IconButton aria-label="delete" size="medium">
+              <IconButton aria-label="delete" size="medium" sx={{padding:{xs:"1px", sm:"8px"}}}>
                 <DeleteIcon fontSize="inherit" />
               </IconButton>
             </Stack>

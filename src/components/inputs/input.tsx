@@ -16,7 +16,10 @@ export const SearchInput= () => {
           }
           placeholder="Search Product..."
           sx={{
-            height:"46px",
+            height: {
+              xs:"38px",
+              sm: "46px"
+            },
             paddingLeft: '8px', 
             paddingRight: '8px', 
             paddingTop:0,

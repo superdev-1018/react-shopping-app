@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { SearchInput } from "@/components/inputs";
 import { Card, CardContent, Container, Stack } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { ContainedButton } from "@/components/buttons";
 import { ProductCard } from "./component/product_info";
 import ProductImg from "/assets/products/product.png";
@@ -57,11 +58,13 @@ const user_data = [
     value: "400 Broome St, New York, NY 10013, USA",
   },
 ];
+
+const txtClass = {color: "black", fontWeight: "bold", fontSize: {xs:"15px", sm: "17px"}}
 const DetailText = ({ title, value }: any) => {
   return (
     <Stack flexDirection={"row"} justifyContent={"space-between"}>
-      <Typography variant="h5">{title}</Typography>
-      <Typography variant="h5" color={title == "Total" ? "black" : "#969696"}>
+      <Typography sx={txtClass}>{title}</Typography>
+      <Typography sx={txtClass} color={title == "Total" ? "black" : "#969696"}>
         $ {value}
       </Typography>
     </Stack>
@@ -71,12 +74,12 @@ const DetailText = ({ title, value }: any) => {
 const UserDataText = ({ title, value }: any) => {
   return (
     <Stack flexDirection={"row"} gap={1}>
-      <Typography variant="h6" color={"#969696"}>
+      <Typography sx={{fontWeight: "bold", fontSize: {xs:"13px", sm: "16px"}}} color={"#969696"}>
         {title}:
       </Typography>
       <Typography 
-      variant="h5" 
       sx={{ 
+        ...txtClass,
         whiteSpace: 'normal',  
         wordBreak: 'break-word', 
         overflowWrap: 'break-word',
@@ -87,27 +90,30 @@ const UserDataText = ({ title, value }: any) => {
 };
 
 export const OrderDetailView = () => {
+  const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1, backgroundColor: "#fffffd", paddingBottom: 3}}>
-      <AppBar position="static" sx={{ backgroundColor: "white" }}>
-        <Toolbar sx={{ justifyContent: "space-between" }}>
+      <AppBar position="static" sx={{ backgroundColor: "white",paddingTop: {xs:0, sm:1}, paddingBottom:{xs:0,sm:1}}}>
+        <Toolbar sx={{ justifyContent: "space-between"}}>
           <IconButton
             edge="start"
             color="default"
             aria-label="menu"
             size="small"
             sx={{ mr: 2 }}
+            onClick={() => navigate("/")}
           >
-            <ArrowBackIosNewIcon />
+            <ArrowBackIosNewIcon sx={{fontSize:{xs:"13px",sm:"16px", fontWeight:"bold"}}}/>
           </IconButton>
           <Typography
-            variant="h4"
             sx={{
               color: "black",
               textAlign: "center",
               flexGrow: 1,
               display: "flex",
               justifyContent: "center",
+              fontSize:{xs:"16px", sm:"18px"},
+              fontWeight: "bold",
             }}
           >
             Order Details
@@ -146,7 +152,7 @@ export const OrderDetailView = () => {
             ))}
           </CardContent>
         </Card>
-        <Box sx={{backgroundColor: '#ffffff', paddingBottom:5}}>
+        <Box sx={{backgroundColor: '#ffffff', paddingBottom:{xs:2,sm:5}, paddingLeft:1}}>
           {user_data.map((item, index) => (
             <UserDataText title={item.title} value={item.value} key={index} />
           ))}

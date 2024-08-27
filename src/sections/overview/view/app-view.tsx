@@ -9,6 +9,7 @@ import {
   MenuItem,
   Typography,
   Grid,
+  Modal,
 } from "@mui/material";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
@@ -20,20 +21,26 @@ import { DashboardCard } from "@/components/card";
 import { Chart } from "@/components/charts";
 import { SearchInput } from "@/components/inputs";
 import { ContainedButton } from "@/components/buttons";
-import { CustomIconButton } from "@/components/Iconbuttons";
+import { CustomImgButton } from "@/components/Iconbuttons";
 import { OrderStatus } from "./component/status";
 import { UserCard } from "./component/userCard";
 import UserAvatar from "/assets/avatar/user.png";
 import Product from "/assets/products/product.png";
 import { useTheme } from "@mui/material/styles";
 import BottomNav from "@/layouts/dashboard/buttom_nav";
+import { CustomizedDialogs } from "./component/modal";
 
 export default function AppView() {
   const theme = useTheme();
   const [selectedOption1, setSelectedOption1] = useState("10");
   const [selectedOption2, setSelectedOption2] = useState("10");
   const [activeTab, setActiveTab] = useState("orders");
-  const ft15 = {fontSize: 15};
+
+  const [isVisible, setVisible] = useState({open:false, type:""});
+  const handleOpen = (param:any) => {setVisible({open:true, type:param});};
+  const handleClose = (param:any) => {setVisible({open:false, type:param});};
+
+  const ft15 = { fontSize: 15 };
   const handleFirstChange = (event: any) => {
     setSelectedOption1(event.target.value);
   };
@@ -98,7 +105,10 @@ export default function AppView() {
 
   return (
     <>
-      <Container maxWidth="xl" sx={{ paddingBottom:5, backgroundColor: "#f2f2f2"}}>
+      <Container
+        maxWidth="xl"
+        sx={{ paddingBottom: 5, backgroundColor: "#f2f2f2" }}
+      >
         <SwitchButton activeTab={activeTab} setActiveTab={setActiveTab} />
         {activeTab === "orders" ? (
           <Box>
@@ -106,14 +116,14 @@ export default function AppView() {
               justifyContent="space-around"
               direction="row"
               alignItems="center"
-              sx={{ pt: 1, pb: 1}}
+              sx={{ pt: 1, pb: 1 }}
             >
               <CustomSelect
                 value={selectedOption1}
                 onChange={handleFirstChange}
                 items={options1}
               />
-              <Stack direction="column" sx={{ fontSize: 9,ml:1,mr:1 }}>
+              <Stack direction="column" sx={{ fontSize: 9, ml: 1, mr: 1 }}>
                 <EastIcon sx={ft15} />
                 <WestIcon sx={ft15} />
               </Stack>
@@ -140,50 +150,54 @@ export default function AppView() {
           </Box>
         ) : (
           <Stack spacing={2} sx={{ paddingTop: 2 }}>
-            <Box sx={{paddingRight:1, paddingLeft: 1}}>
-              <SearchInput />          
+            <Box sx={{ paddingRight: 1, paddingLeft: 1 }}>
+              <SearchInput />
             </Box>
-            <Grid container spacing={1}>
-              <Grid item xs={6.5}>
-                <ContainedButton title={"Create Order"} icon="plus"/>
+            <Grid container sx={{ paddingRight: 1, paddingLeft: 1}}>
+              <Grid item xs={6.5} sx={{paddingRight:"5px"}}>
+                <ContainedButton title={"Create Order"} icon="plus" />
               </Grid>
               <Grid item xs={5.5}>
-                <Stack direction="row" spacing={1}>
-                  <CustomIconButton image="lightdown" size={16}/>
-                  <CustomIconButton image="lightup" size={16}/>
-                  <CustomIconButton image="lighttune" size={16}/>
+                <Stack direction="row" spacing={0.5} justifyContent={"flex-end"}>
+                  <CustomImgButton image="lightdown" size={16} open = {()=>handleOpen("download")} />
+                  <CustomImgButton image="lightup" size={16} open = {()=>handleOpen("sort")} />
+                  <CustomImgButton image="lighttune" size={16}  open = {()=>handleOpen("payment")}/>
                 </Stack>
               </Grid>
             </Grid>
             <Stack spacing={2}>
-              <Typography sx={{fontSize: 15, fontWeight: 'bold'}}>Your Orders</Typography>
+              <Typography sx={{ fontSize: 15, fontWeight: "bold" }}>
+                Your Orders
+              </Typography>
               <OrderStatus />
-              <UserCard 
+              <UserCard
                 userName="John Bushmill"
                 userImg={UserAvatar}
                 product="Visionary Brew "
                 productImg={Product}
-                total={120.00}
-                payment ="Mastercard"
-                date = "29 Dec 2022"
+                total={120.0}
+                payment="Mastercard"
+                date="29 Dec 2022"
                 orderNo={302012}
-                status = {1}
+                status={1}
               />
-              <UserCard 
+              <UserCard
                 userName="John Myaie"
                 userImg={UserAvatar}
                 product="Visionary Brew"
                 productImg={Product}
-                total={1900.00}
-                payment ="PayPal"
-                date = "24 Oct 2022"
+                total={1900.0}
+                payment="PayPal"
+                date="24 Oct 2022"
                 orderNo={302012}
-                status = {2}
+                status={2}
               />
             </Stack>
           </Stack>
         )}
       </Container>
+      <CustomizedDialogs openDialog={isVisible} close={()=>handleClose("")}/>
+
     </>
   );
 }

@@ -30,7 +30,7 @@ export default function BottomNav() {
   return (
     <Box
       sx={{
-        height: "17%",
+        height: "15%",
         maxWidth: "100%",
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
@@ -49,8 +49,8 @@ export default function BottomNav() {
           bottom: 0,
           height:"80%",
           width: "100%",
-          borderTopLeftRadius: 44,
-          borderTopRightRadius: 44,
+          borderTopLeftRadius: 34,
+          borderTopRightRadius: 34,
           backgroundColor: theme.palette.background.paper,
           boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.9)',
           overflow: "hidden"
