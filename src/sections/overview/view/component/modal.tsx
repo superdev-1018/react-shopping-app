@@ -23,10 +23,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import CustomAccordion from "./accordion";
 import CustomIcon from "@mui/icons-material/KeyboardArrowDown";
-import { ContainedButton, TextButton } from "@/components/buttons";
-
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
